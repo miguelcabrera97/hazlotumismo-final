@@ -1,5 +1,5 @@
-<x-app-layouts>
-    <div class="md:ml-56 lg:ml-56 xl:ml-80 grid grid-cols-1 p-10">
+<x-app-layout>
+    <div class=" grid grid-cols-1 p-10">
         
     
 
@@ -107,4 +107,4 @@
                 </div>
             </div>
     </div>
-</x-app-layouts>
+</x-app-layout>

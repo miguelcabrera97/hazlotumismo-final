@@ -7,7 +7,7 @@
             
          
                 {{-- CARD --}}
-         <div class=" grid grid-cols-1  mt-3 h-4/6" id="template_list">
+         <div class="border border-gray-200 grid grid-cols-1  mt-3 h-4/6" id="template_list">
             <div class="flex  flex-col"> {{--  Flex --}
                  {{-- Card Title--}}
                   {{-- End Card Title--}}

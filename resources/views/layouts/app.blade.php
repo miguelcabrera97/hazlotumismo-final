@@ -28,7 +28,7 @@
             <!-- Page Content -->
             <div class="mt-12">
                 <x-nav/>
-                <main class=" lg:ml-56 xl:ml-72">
+                <main class="lg:ml-56 xl:ml-80">
                     {{ $slot }}
                 </main>
             </div>

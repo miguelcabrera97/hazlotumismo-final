@@ -30,7 +30,7 @@
 
             
             {{-- MIS SITIOS --}}
-            <a href="/sitios/{{Auth::user()->email}}">
+            <a href="/sites">
                 <li class=" py-3 ">
                     <div class="p-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-violet-600 hover:text-white ">
                 
@@ -68,6 +68,7 @@
 
         <h6 class="font-bold mb-4 mt-4">Configuracion</h6>
         <ul>
+            {{-- Perfil  --}}
             <a href="{{route('profile.show')}}">
                 <li class=" py-3 ">
                     <div class="p-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-violet-600 hover:text-white ">
@@ -77,8 +78,8 @@
                       </div>
                 </li>
             </a>
-
-
+            {{-- END  Perfil  --}}
+            
            
         </ul>
     </div>
