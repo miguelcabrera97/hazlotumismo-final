@@ -1,3 +1,4 @@
+@section('title','Inicio')
 <x-app-layout>
     <div class="  p-10">
         

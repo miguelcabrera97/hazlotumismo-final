@@ -1,11 +1,10 @@
+@section('title','Crear Sitio')
+    
+
 <x-app-layout>
     <div class="z-0 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 p-10 gap-6">
-        @php
-        $cont = 0;
-         @endphp     
+           
         @foreach ($templates as $template)
-            
-         
                 {{-- CARD --}}
          <div class="border border-gray-200 grid grid-cols-1  mt-3 h-4/6" id="template_list">
             <div class="flex  flex-col"> {{--  Flex --}
@@ -40,13 +39,9 @@
                  <div class="rounded-b-2xl bg-white w-full text-center  py-2"> 
                     <p class="text-sm capitalize">{{$template->template_name}}</p>    
                  </div>
-                                   </div>{{-- End Flex --}}
+              </div>{{-- End Flex --}}
          </div>
-          {{--  END CARD --}}      
-         @php
-           $cont = $cont + 1;
-         @endphp
-                 
+          {{--  END CARD --}}           
         @endforeach
          
 
@@ -84,5 +79,7 @@
         document.getElementById('modal').classList.toggle('hidden')
         document.getElementById("templateid").value = id;
     }
+    
   </script>
+  @vite(['resources/js/script.js'])
 </x-app-layout>

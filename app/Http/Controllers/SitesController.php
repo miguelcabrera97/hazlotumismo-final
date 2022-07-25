@@ -81,8 +81,8 @@ class SitesController extends Controller
         ]);
         $site_name = json_decode($response->getBody()->getContents());
         $site_url = $site_name->url;
-        header("Location: ".$site_url);
-        die();
+        
+        return redirect()->away(''.$site_url.'');
     }
 
     //Resetear sitio con la plantilla que escogiste al inicio
@@ -100,7 +100,7 @@ class SitesController extends Controller
     }
 
     // Eliminar Sitio
-    public function delete($site){
+    public function delete($site,$id){
         $client = new \GuzzleHttp\Client();
         $response = $client->request('DELETE', 'https://api.duda.co/api/sites/multiscreen/'.$site.'', [
         'headers' => [
@@ -109,8 +109,8 @@ class SitesController extends Controller
         ],
         ]);
 
-        $deleted = DB::table('sitios')->delete();
+        $deleted = DB::table('sitios')->delete($id);
 
-        return redirect('/crearsitio');
+        return redirect()->action([UsersController::class,'show']);
     }
 }

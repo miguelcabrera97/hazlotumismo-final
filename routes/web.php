@@ -41,5 +41,5 @@ Route::get('/sites',[UsersController::class,'show']);
 
 Route::get('/editar/{cuenta}/{id}',[SitesController::class, 'editar']);
 
-Route::get('/delete/{site}',[SitesController::class,'delete']);
+Route::get('/delete/{site}/{id}',[SitesController::class,'delete']);
 

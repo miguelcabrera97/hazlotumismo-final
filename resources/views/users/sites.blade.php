@@ -1,3 +1,4 @@
+@section('title','Mis Sitios')
 <x-app-layout>
     <div class="">
         <table class="min-w-full leading-normal ">
@@ -38,21 +39,8 @@
                         </td>
 
                         <td class="flex mt-3">
-                            <a class="mr-5" href="/editar/{{Auth::user()->email}}/{{$site->siteid}}">Editar</a>
-
-
-                            
-                            <form action="{{route('resetear')}}" method="POST">
-                                @csrf
-                                <input class="mr-5" type="hidden" value="{{$site->siteid}}" name="id">
-                                <input type="hidden" value="{{$site->template}}">
-                                <input class="mr-5" type="submit" value="Resetear">
-                                
-                            </form> 
-
-
-
-                            <a href="/delete/{{$site->siteid}}">Borrar Sitio</a>
+                            <a class="p-3 mr-5 flex items-center rounded-md px-4 duration-300 cursor-pointer  bg-violet-600 text-white " href="/editar/{{Auth::user()->email}}/{{$site->siteid}}">Editar</a>
+                            <a class="p-3 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-red-600 text-white " href="/delete/{{$site->siteid}}/{{$site->id}}">Borrar Sitio</a>
                         </td>
                     </tr>
                 @endforeach
