@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SitesController extends Controller
-{
-    public function show()
-    {
-        //Muestra las plantillas disponibles a elegir
+{   
+    
+    //Muestra las plantillas disponibles a elegir
+    public function show(){
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://api.duda.co/api/sites/multiscreen/templates', [
         'headers' => [
@@ -22,8 +22,8 @@ class SitesController extends Controller
         return view('templates',compact('templates'));
     }
 
+    //Proceso para Crear Sitio
     public function crear(Request $request){
-
         //Crea Sitio con la Plantilla Elegida
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'https://api.duda.co/api/sites/multiscreen/create', [
@@ -71,6 +71,7 @@ class SitesController extends Controller
 
     }
 
+    //Editar Sitio
     public function editar($cuenta, $id){
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', 'https://api.duda.co/api/accounts/sso/'.$cuenta.'/link?site_name='.$id.'&target=EDITOR', [
@@ -113,4 +114,18 @@ class SitesController extends Controller
 
         return redirect()->action([UsersController::class,'show']);
     }
+
+    //Mostrar lista de Sitios Creados por el Usuario
+    // public function sitios(){
+    //     $client = new \GuzzleHttp\Client();
+    //     $response = $client->request('GET', 'https://api.duda.co/api/accounts/grant-access/'.$user.'/sites/multiscreen', [
+    //     'headers' => [
+    //         'Accept' => 'application/json',
+    //         'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
+    //     ],
+    //     ]);
+        
+    //     $sitios= json_decode($response->getBody()->getContents());
+    //     return view('sitios', compact('sitios'));
+    // }
 }
