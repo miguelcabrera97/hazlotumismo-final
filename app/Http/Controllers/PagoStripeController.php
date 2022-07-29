@@ -12,8 +12,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -25,8 +23,8 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
+        
     }
 
     public function PagarMxnMensual(){
@@ -35,8 +33,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -48,8 +44,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarUsdAnual(){
@@ -58,8 +53,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -71,8 +64,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarUsdMensual(){
@@ -81,8 +73,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -94,8 +84,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarEurAnual(){
@@ -104,8 +93,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -117,8 +104,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarEurMensual(){
@@ -127,8 +113,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -140,8 +124,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarCopAnual(){
@@ -150,8 +133,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -163,8 +144,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarCopMensual(){
@@ -173,8 +153,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -186,8 +164,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarClpAnual(){
@@ -196,8 +173,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -209,8 +184,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarClpMensual(){
@@ -219,8 +193,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -232,8 +204,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarSolAnual(){
@@ -242,8 +213,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -255,8 +224,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarSolMensual(){
@@ -265,8 +233,6 @@ class PagoStripeController extends Controller
 
         header('Content-Type: application/json');
 
-        $YOUR_DOMAIN = 'http://localhost/StripeTest/public/';
-
         $checkout_session = \Stripe\Checkout\Session::create([
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
@@ -278,8 +244,7 @@ class PagoStripeController extends Controller
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return redirect()->away(''.$checkout_session->url.'');
     }
 
 }

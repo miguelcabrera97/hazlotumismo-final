@@ -57,3 +57,6 @@ Route::controller(PagoStripeController::class)->group(function (){
     Route::post('/SOL-Mensual','PagarSolMensual')-> name("SOL-Mensual");
 });
 
+Route::get('/checkout', function(){
+    return view('stripe.pago');
+});

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class SitesController extends Controller
 {   
-    
     //Muestra las plantillas disponibles a elegir
     public function show(){
         $client = new \GuzzleHttp\Client();
