@@ -13,7 +13,7 @@
                  <div class="h-full w-full relative ">
                      {{-- Botones de Creación y preview --}}
                      <div class="  absolute rounded-b-2xl  backdrop-blur-sm bg-black/50 h-full w-full opacity-0 hover:opacity-100 hover:ease-all hover:duration-300 ">
-                         <div class="grid grid-cols-1 gap-1 justify-items-center pt-20 2xl:pt-44" >
+                         <div class="grid grid-cols-1 gap-1 justify-items-center lg:pt-20 2xl:pt-44" >
 
                            {{-- <input type="submit" class="m-2 w-3/5  items-center p-3 text-md text-center font-bold text-white bg-fuchsia-500 hover:bg-fuchsia-400 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" value="Empezar a crear" onclick="CrearSitio('{{$cont+1}}')" >  --}}
                            

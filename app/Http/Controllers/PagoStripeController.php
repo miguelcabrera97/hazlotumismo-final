@@ -19,7 +19,7 @@ class PagoStripeController extends Controller
             'quantity' => 1,
         ]],
         'mode' => 'payment',
-        'success_url' => 'https://www.google.com',
+        'success_url' =>'http://localhost/hazlotumismo-final/public/',
         'cancel_url' => "https://www.twitter.com/",
         ]);
 
