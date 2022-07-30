@@ -24,4 +24,9 @@ class UsersController extends Controller
         $sites = DB::table('sitios')->get();
         return view('users.sites', ['sites' => $sites]);
     }
+
+    public function plantillas(){
+        $templates = DB::table('templates')->get();
+        return view('templates',['templates' => $templates]);
+    }
 }

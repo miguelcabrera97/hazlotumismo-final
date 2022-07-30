@@ -3,6 +3,7 @@
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PagoStripeController;
+use App\Http\Controllers\TemplatesBdController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -38,6 +39,12 @@ Route::get('/users',[UsersController::class,'index']);
 
 //Lista de Sitios por consulta a BD
 Route::get('/sites',[UsersController::class,'show']);
+
+
+
+Route::get('/cargar',[TemplatesBdController::class,'templates']);
+
+Route::get('/plantillas',[UsersController::class, 'plantillas']);
 
 
 //Pagos Stripe
