@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LaravelLang\Publisher\Services\Filesystem\Php;
+//use Slim\Http\Request;
+use Slim\Http\Response;
+use Stripe\Stripe;
 
 class PagoStripeController extends Controller
 {
@@ -19,11 +23,15 @@ class PagoStripeController extends Controller
             'quantity' => 1,
         ]],
         'mode' => 'payment',
-        'success_url' =>'http://localhost/hazlotumismo-final/public/',
+        'success_url' => 'http://localhost/hazlotumismo-final/public/facturacion/?session_id={CHECKOUT_SESSION_ID}',
         'cancel_url' => "https://www.twitter.com/",
         ]);
-
-        return redirect()->away(''.$checkout_session->url.'');
+        
+        $stripe = new \Stripe\StripeClient("sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu");
+        return $line_items = $stripe->checkout->sessions->all(['limit' => 20]); //allLineItems(''.$checkout_session->id.'', ['limit' => 5]);
+        //return $checkout_session;
+        
+        //return redirect()->away(''.$checkout_session->url.'');  
         
     }
 
@@ -163,8 +171,8 @@ class PagoStripeController extends Controller
         'success_url' => 'https://www.google.com',
         'cancel_url' => "https://www.twitter.com/",
         ]);
-
-        return redirect()->away(''.$checkout_session->url.'');
+        var_dump($checkout_session);
+        //return redirect()->away(''.$checkout_session->url.'');
     }
 
     public function PagarClpAnual(){
@@ -246,5 +254,12 @@ class PagoStripeController extends Controller
 
         return redirect()->away(''.$checkout_session->url.'');
     }
+
+
+    public function ExitoStripe(Request $request)
+    {
+
+    }
+
 
 }

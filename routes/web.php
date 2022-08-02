@@ -4,6 +4,7 @@ use App\Http\Controllers\SitesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PagoStripeController;
 use App\Http\Controllers\TemplatesBdController;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,8 +27,7 @@ Route::controller(SitesController::class)->group(function (){
     //Ruta a Controlador para crear sitio
     Route::post('/crear','crear')->name('crear');
 
-    //Ruta a Controlador para resetear el sitio
-    Route::post('/resetear','reset')->name('resetear');
+    
 
     Route::get('/editar/{cuenta}/{id}','editar');
 
@@ -38,13 +38,13 @@ Route::controller(SitesController::class)->group(function (){
 Route::get('/users',[UsersController::class,'index']);
 
 //Lista de Sitios por consulta a BD
-Route::get('/sites',[UsersController::class,'show']);
+Route::get('/sites',[UsersController::class,'show'])->name('sites');
 
 
 
 Route::get('/cargar',[TemplatesBdController::class,'templates']);
 
-Route::get('/plantillas',[UsersController::class, 'plantillas']);
+Route::get('/plantillas',[UsersController::class, 'plantillas'])->name('plantillas');
 
 
 //Pagos Stripe
@@ -62,8 +62,13 @@ Route::controller(PagoStripeController::class)->group(function (){
     Route::post('/CLP-Mensual','PagarClpMensual')-> name("CLP-Mensual");
     Route::post('/SOL-Anual','PagarSolAnual')->     name("SOL-Anual");
     Route::post('/SOL-Mensual','PagarSolMensual')-> name("SOL-Mensual");
+    Route::get('/facturacion','ExitoStripe');
 });
 
 Route::get('/checkout', function(){
     return view('stripe.pago');
 });
+
+// Route::get('/facturacion', function(){
+//     return view('stripe.facturacion');
+// });
