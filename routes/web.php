@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PagosController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PagoStripeController;
@@ -69,6 +70,11 @@ Route::get('/checkout', function(){
     return view('stripe.pago');
 });
 
-// Route::get('/facturacion', function(){
-//     return view('stripe.facturacion');
-// });
+Route::get('/facturacion', function(){
+    
+
+    return view('stripe.facturacion');
+}
+)->name('facturacion');
+
+//function(){return view('stripe.facturacion');}

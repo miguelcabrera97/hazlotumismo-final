@@ -23,15 +23,16 @@ class PagoStripeController extends Controller
             'quantity' => 1,
         ]],
         'mode' => 'payment',
-        'success_url' => 'http://localhost/hazlotumismo-final/public/facturacion/?session_id={CHECKOUT_SESSION_ID}',
+        'success_url' => 'http://127.0.0.1:8000/facturacion?session_id={CHECKOUT_SESSION_ID}',
         'cancel_url' => "https://www.twitter.com/",
         ]);
         
-        $stripe = new \Stripe\StripeClient("sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu");
-        return $line_items = $stripe->checkout->sessions->all(['limit' => 20]); //allLineItems(''.$checkout_session->id.'', ['limit' => 5]);
+        //$stripe = new \Stripe\StripeClient("sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu");
+        
+        //return $line_items = $stripe->checkout->sessions->all(['limit' => 20]); //allLineItems(''.$checkout_session->id.'', ['limit' => 5]);
         //return $checkout_session;
         
-        //return redirect()->away(''.$checkout_session->url.'');  
+        return redirect()->away(''.$checkout_session->url.'');  
         
     }
 

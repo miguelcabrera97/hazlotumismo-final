@@ -42,7 +42,7 @@
             {{-- END MIS SITIOS --}}
 
             {{-- MI FACTURACION --}}
-            <a href=" ">
+            <a href=" {{route('facturacion')}}">
                 <li class=" py-3 ">
                     <div class="p-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-violet-600 hover:text-white ">
                 
