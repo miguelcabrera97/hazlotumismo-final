@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('facturacion', function (Blueprint $table) {
             $table->id();
+            
             $table->timestamps();
             $table->float('total');
             $table->string('divisa');
             $table->string('ver');
-            $table->string('descargar');
             $table->date('creado');
+            $table->string('cliente');
         });
     }
 

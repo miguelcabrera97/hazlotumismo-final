@@ -7,9 +7,13 @@ use LaravelLang\Publisher\Services\Filesystem\Php;
 //use Slim\Http\Request;
 use Slim\Http\Response;
 use Stripe\Stripe;
+use Illuminate\Support\Facades\DB;
+
 
 class PagoStripeController extends Controller
 {
+    
+
     public function PagarMxnAnual(){
         // This is your test secret API key.
         \Stripe\Stripe::setApiKey('sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu');
@@ -23,17 +27,50 @@ class PagoStripeController extends Controller
             'quantity' => 1,
         ]],
         'mode' => 'payment',
-        'success_url' => 'http://127.0.0.1:8000/facturacion?session_id={CHECKOUT_SESSION_ID}',
+        'success_url' => 'http://127.0.0.1:8000/facturacion/aceptado',
         'cancel_url' => "https://www.twitter.com/",
         ]);
         
         //$stripe = new \Stripe\StripeClient("sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu");
         
         //return $line_items = $stripe->checkout->sessions->all(['limit' => 20]); //allLineItems(''.$checkout_session->id.'', ['limit' => 5]);
-        //return $checkout_session;
         
+        //$pagos = \Stripe\Checkout\Session::retrieve(''.$checkout_session->id.'');
+        DB::table('facturacion')->insert([
+            [
+             'total' => ''.$checkout_session->amount_total.'',
+             'divisa' => 'mxn',
+             'creado' => date('Y-m-d H:i:s'),
+             'ver' => ''.$checkout_session->id.'',
+             'cliente' => ''.$checkout_session->client_reference_id.''   
+             ],
+        ]);  
+
+        
+        //return $pagos;
         return redirect()->away(''.$checkout_session->url.'');  
+        //return $cliente;
         
+    }
+
+    public function aceptado(){
+         // This is your test secret API key.
+         \Stripe\Stripe::setApiKey('sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu');
+        $pagos = DB::table('facturacion')->get();
+        foreach($pagos as $pago){
+            $status = \Stripe\Checkout\Session::retrieve(''.$pago->ver.'');
+             DB::table('facturacion')->insert([
+                 [
+                    'total' => ''.$status->amount_total.'',
+                    'divisa' => 'mxn',
+                    'creado' => date('Y-m-d H:i:s'),
+                    'ver' => ''.$status->payment_status.'',
+                    'cliente' => ''.$status->client_reference_id.''
+                 ],
+             ]);
+        }
+          //return $status; 
+        return redirect('/facturacion');
     }
 
     public function PagarMxnMensual(){

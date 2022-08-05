@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PagoStripeController;
 use App\Http\Controllers\TemplatesBdController;
 use FontLib\Table\Type\name;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
@@ -71,10 +72,12 @@ Route::get('/checkout', function(){
 });
 
 Route::get('/facturacion', function(){
-    
+    $pagos =DB::table('facturacion')->get();
 
-    return view('stripe.facturacion');
+    return view('stripe.facturacion',['pagos' => $pagos]);
 }
 )->name('facturacion');
 
 //function(){return view('stripe.facturacion');}
+
+Route::get('/facturacion/aceptado',[PagoStripeController::class,'aceptado']);
