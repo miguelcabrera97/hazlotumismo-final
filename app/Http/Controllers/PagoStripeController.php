@@ -28,7 +28,7 @@ class PagoStripeController extends Controller
         ]],
         'mode' => 'payment',
         'success_url' => 'http://127.0.0.1:8000/facturacion/aceptado',
-        'cancel_url' => "https://www.twitter.com/",
+        'cancel_url' => "http://127.0.0.1:8000/facturacion/aceptado",
         ]);
         
         //$stripe = new \Stripe\StripeClient("sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu");
@@ -36,15 +36,16 @@ class PagoStripeController extends Controller
         //return $line_items = $stripe->checkout->sessions->all(['limit' => 20]); //allLineItems(''.$checkout_session->id.'', ['limit' => 5]);
         
         //$pagos = \Stripe\Checkout\Session::retrieve(''.$checkout_session->id.'');
-        DB::table('facturacion')->insert([
-            [
-             'total' => ''.$checkout_session->amount_total.'',
-             'divisa' => 'mxn',
-             'creado' => date('Y-m-d H:i:s'),
-             'ver' => ''.$checkout_session->id.'',
-             'cliente' => ''.$checkout_session->client_reference_id.''   
-             ],
-        ]);  
+        // DB::table('facturacion')->insert([
+        //     [
+        //      'total' => ''.$checkout_session->amount_total.'',
+        //      'divisa' => 'mxn',
+        //      'creado' => date('Y-m-d H:i:s'),
+        //      'ver' => ''.$checkout_session->id.'',
+        //      'cliente' => ''.$checkout_session->client_reference_id.'',
+        //      'estado' => ''.$checkout_session->payment_status.''   
+        //      ],
+        // ]);  
 
         
         //return $pagos;
@@ -64,8 +65,9 @@ class PagoStripeController extends Controller
                     'total' => ''.$status->amount_total.'',
                     'divisa' => 'mxn',
                     'creado' => date('Y-m-d H:i:s'),
-                    'ver' => ''.$status->payment_status.'',
-                    'cliente' => ''.$status->client_reference_id.''
+                    'ver' => ''.$status->id.'',
+                    'cliente' => ''.$status->client_reference_id.'',
+                    'estado' => ''.$status->payment_status.''
                  ],
              ]);
         }

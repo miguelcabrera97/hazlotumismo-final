@@ -72,7 +72,7 @@ Route::get('/checkout', function(){
 });
 
 Route::get('/facturacion', function(){
-    $pagos =DB::table('facturacion')->get();
+    $pagos = DB::table('facturacion')->get();
 
     return view('stripe.facturacion',['pagos' => $pagos]);
 }

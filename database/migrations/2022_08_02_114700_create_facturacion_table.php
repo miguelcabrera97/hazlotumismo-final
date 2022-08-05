@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('ver');
             $table->date('creado');
             $table->string('cliente');
+            $table->string('estado');
         });
     }
 
