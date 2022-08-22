@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class PagoStripeController extends Controller
 {
-    
+
     public function PagarMxnAnual(){
         // This is your test secret API key.
         \Stripe\Stripe::setApiKey('sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu');
@@ -20,42 +20,19 @@ class PagoStripeController extends Controller
         header('Content-Type: application/json');
 
         $checkout_session = \Stripe\Checkout\Session::create([
-        'customer' => 'cus_MFcnliFrBVzYco',
         'line_items' => [[
             # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-            'price' => 'price_1LQbFgDdrSDOwrdabVLzdO4v',
+            'price' => 'price_1LZdvJDdrSDOwrdaFSdLvY3j',
             'quantity' => 1,
         ]],
-        'mode' => 'payment',
+        'mode' => 'subscription',
         'success_url' => 'http://127.0.0.1:8000/facturacion/aceptado',
         'cancel_url' => "http://127.0.0.1:8000/facturacion/aceptado",
         ]);
-        
-        //$stripe = new \Stripe\StripeClient("sk_test_51LPW7ODdrSDOwrdagflUHPc2JKvOYfCiLTa8m5gpNTTY9JeQ0CMYKwV7toLDjLZwuINvAqSjiNSuaY5qTPmYLdmH007oM3tVgu");
-        
-        //return $line_items = $stripe->checkout->sessions->all(['limit' => 20]); //allLineItems(''.$checkout_session->id.'', ['limit' => 5]);
-        
-        // $pagos = \Stripe\Checkout\Session::retrieve(''.$checkout_session->id.'');
-        //     DB::table('facturacion')->insert([
-        //         [
-        //          'total' => ''.$checkout_session->amount_total.'',
-        //          'divisa' => 'mxn',
-        //          'creado' => date('Y-m-d H:i:s'),
-        //             'ver' => ''.$checkout_session->id.'',
-        //          'cliente' => ''.$checkout_session->client_reference_id.'',
-        //          'estado' => ''.$checkout_session->payment_status.''   
-        //          ],
-        //     ]);  
 
-        
-        //return $pagos;
-        return redirect()->away(''.$checkout_session->url.'');  
-        //return $checkout_session->customer;
-        //return $checkout_session;
-    }
 
-    public function aceptado(){
-         
+        return redirect()->away(''.$checkout_session->url.'');
+
     }
 
     public function PagarMxnMensual(){
@@ -279,7 +256,7 @@ class PagoStripeController extends Controller
     }
 
 
-    
+
 
 
 }
