@@ -21,7 +21,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
 Route::controller(SitesController::class)->group(function (){
 
     //Ruta a Crontolador para mostrar Plantillas Disponibles
-    Route::get('/crearsitio','show')->name('crearsitio'); 
+    Route::get('/crearsitio','show')->name('crearsitio');
 
     //Ruta para mostrar Sitios que el Usuario a Creado por medio de API
     // Route::get('/sitios/{user}',[SitesController::class, 'sitios'])->name('sitios');
@@ -29,7 +29,7 @@ Route::controller(SitesController::class)->group(function (){
     //Ruta a Controlador para crear sitio
     Route::post('/crear','crear')->name('crear');
 
-    
+
 
     Route::get('/editar/{cuenta}/{id}','editar');
 
@@ -72,12 +72,18 @@ Route::get('/checkout', function(){
 });
 
 Route::get('/facturacion', function(){
-    $pagos = DB::table('facturacion')->get();
+    $stripe = new \Stripe\StripeClient(
+        'sk_test_51LZk7pIouA9z8SYyfOAHSEm9opwyaipP01qRyhkiTnsw7Ue4a3GtNopuzDKyMzzrelXDmDEKcliXaSW0lI8f9euv00XJ8VrToP'
+      );
+    $idcreado = DB::table('clientes')->where('email','=', ''.Auth::user()->email.'')->first();
 
-    return view('stripe.facturacion',['pagos' => $pagos]);
-}
-)->name('facturacion');
 
-//function(){return view('stripe.facturacion');}
+    $responses = $stripe->subscriptions->all( ['customer' => ''.$idcreado->id_stripe.''] );
+    $invoices = $stripe->invoices->all(['customer' => ''.$idcreado->id_stripe.'']);
+    //return dd($invoices->data[1]->lines->data[0]->period->end);
+    //return dd($invoices);
+    return view('stripe.facturacion', compact('invoices','responses'));
+})->name('facturacion');
+
 
 Route::get('/facturacion/aceptado',[PagoStripeController::class,'aceptado']);

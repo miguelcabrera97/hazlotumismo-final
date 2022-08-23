@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\DB;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -34,8 +35,28 @@ class CreateNewUser implements CreatesNewUsers
         $nombre = $input['name'];
         $target = " ";
         $nombre_separado = explode($target, $nombre);
-    
 
+        //CUSTOMER STRIPE CREATE
+        $stripe = new \Stripe\StripeClient(
+            'sk_test_51LZk7pIouA9z8SYyfOAHSEm9opwyaipP01qRyhkiTnsw7Ue4a3GtNopuzDKyMzzrelXDmDEKcliXaSW0lI8f9euv00XJ8VrToP'
+          );
+
+         $customer = $stripe->customers->create(array(
+            'email' => $input['email'],
+            'name'=>$input['name'],
+            'description'=> 'Cliente Social Conecta'
+          ));
+
+        DB::table('clientes')->insert([
+            'id_stripe' => $customer->id,
+            'email' => $customer->email,
+            'descripcion'=>$customer->description,
+               ]);
+
+
+
+
+        // DUDA ACCOUNT CREATE
         $response = $client->request('POST', 'https://api.duda.co/api/accounts/create', [
         'body' => '{"account_type":"CUSTOMER","account_name":"'.$input['email'].'","first_name":"'.$nombre_separado[0].'" ,"last_name":"'.$nombre_separado[1].'"}',
         'headers' => [
@@ -45,7 +66,7 @@ class CreateNewUser implements CreatesNewUsers
         ],
         ]);
 
-
+        // USER SYSTEM CREATE
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],

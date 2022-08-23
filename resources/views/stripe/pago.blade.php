@@ -25,7 +25,7 @@
                           <h2 class="px-12 text-3xl font-bold text-center md:text-2xl text-blue-700">
                             Elige tu plan
                           </h2>
-                          
+
                           <div class="flex flex-wrap items-center justify-between py-4 pt-0 mt-5">
                             <div class="w-full p-4 md:w-1/2 lg:w-1/3 plan-card">
                               <label class="flex flex-col rounded-lg shadow-lg group relative hover:shadow-2xl">
@@ -106,16 +106,17 @@
                                         </li>
                                     </ul>
                                   </p>
-                                  
+
                                 </div>
                                 <div class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500">
                                     <form action="{{route('Mxn-Anual')}}" method="POST">
                                         @csrf
+                                        <input type="text" value="{{Auth::user()->email}}" name="emailuser">
                                         <button class="w-full p-3 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                                             Escoger Plan
-                                        </button>  
+                                        </button>
                                     </form>
-                                  
+
                                 </div>
                               </label>
                             </div>
@@ -199,17 +200,18 @@
                                         </li>
                                       </ul>
                                     </p>
-                                    
+
                                   </div>
                                   <div
                                     class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500"
                                   >
-                                   
+
                                   <form action="{{route('Mxn-Anual')}}" method="POST">
                                     @csrf
+                                    <input type="text" value="{{Auth::user()->email}}" name="emailuser">
                                     <button class="w-full p-3 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                                         Escoger Plan
-                                    </button>  
+                                    </button>
                                 </form>
                                   </div>
                                 </label>
@@ -295,24 +297,25 @@
                                         </li>
                                       </ul>
                                     </p>
-                                    
+
                                   </div>
                                   <div
                                     class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500"
                                   >
-                                   
+
                                   <form action="{{route('Mxn-Anual')}}" method="POST">
                                     @csrf
+                                    <input type="text" value="{{Auth::user()->email}}" name="emailuser">
                                     <button class="w-full p-3 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                                         Escoger Plan
-                                    </button>  
+                                    </button>
                                 </form>
                                   </div>
                                 </label>
                               </div>
-                    
-                            
-                    
+
+
+
                           </div>
                         </div>
                       </div>
@@ -323,7 +326,7 @@
                           <h2 class="px-12 text-3xl font-bold text-center md:text-2xl text-blue-700">
                             Elige tu plan
                           </h2>
-                          
+
                           <div class="flex flex-wrap items-center justify-between py-4 pt-0 mt-5">
                             <div class="w-full p-4 md:w-1/2 lg:w-1/3 plan-card">
                               <label class="flex flex-col rounded-lg shadow-lg group relative hover:shadow-2xl">
@@ -404,17 +407,17 @@
                                         </li>
                                     </ul>
                                   </p>
-                                  
+
                                 </div>
                                 <div
                                   class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500"
                                 >
-                                 
+
                                 <form action="{{route('Mxn-Anual')}}" method="POST">
                                     @csrf
                                     <button class="w-full p-3 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                                         Escoger Plan
-                                    </button>  
+                                    </button>
                                 </form>
                                 </div>
                               </label>
@@ -499,17 +502,17 @@
                                         </li>
                                       </ul>
                                     </p>
-                                    
+
                                   </div>
                                   <div
                                     class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500"
                                   >
-                                   
+
                                   <form action="{{route('Mxn-Anual')}}" method="POST">
                                     @csrf
                                     <button class="w-full p-3 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                                         Escoger Plan
-                                    </button>  
+                                    </button>
                                 </form>
                                   </div>
                                 </label>
@@ -595,24 +598,24 @@
                                         </li>
                                       </ul>
                                     </p>
-                                    
+
                                   </div>
                                   <div
                                     class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500"
                                   >
-                                   
+
                                   <form action="{{route('Mxn-Anual')}}" method="POST">
                                     @csrf
                                     <button class="w-full p-3 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                                         Escoger Plan
-                                    </button>  
+                                    </button>
                                 </form>
                                   </div>
                                 </label>
                               </div>
-                    
-                            
-                    
+
+
+
                           </div>
                         </div>
                       </div>
