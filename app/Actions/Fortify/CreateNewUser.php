@@ -36,6 +36,16 @@ class CreateNewUser implements CreatesNewUsers
         $target = " ";
         $nombre_separado = explode($target, $nombre);
 
+        // DUDA ACCOUNT CREATE
+        $response = $client->request('POST', 'https://api.duda.co/api/accounts/create', [
+        'body' => '{"account_type":"CUSTOMER","account_name":"'.$input['email'].'","first_name":"'.$nombre_separado[0].'" ,"last_name":"'.$nombre_separado[1].'"}',
+        'headers' => [
+            'Accept' => 'application/json',
+            'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
+            'Content-Type' => 'application/json',
+        ],
+        ]);
+
         //CUSTOMER STRIPE CREATE
         $stripe = new \Stripe\StripeClient(
             'sk_test_51LZk7pIouA9z8SYyfOAHSEm9opwyaipP01qRyhkiTnsw7Ue4a3GtNopuzDKyMzzrelXDmDEKcliXaSW0lI8f9euv00XJ8VrToP'
@@ -54,17 +64,6 @@ class CreateNewUser implements CreatesNewUsers
                ]);
 
 
-
-
-        // DUDA ACCOUNT CREATE
-        $response = $client->request('POST', 'https://api.duda.co/api/accounts/create', [
-        'body' => '{"account_type":"CUSTOMER","account_name":"'.$input['email'].'","first_name":"'.$nombre_separado[0].'" ,"last_name":"'.$nombre_separado[1].'"}',
-        'headers' => [
-            'Accept' => 'application/json',
-            'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
-            'Content-Type' => 'application/json',
-        ],
-        ]);
 
         // USER SYSTEM CREATE
         return User::create([

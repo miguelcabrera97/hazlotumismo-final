@@ -31,8 +31,8 @@ class PagoStripeController extends Controller
         ]],
         'mode' => 'subscription',
         'customer' => ''.$idcreado->id_stripe.'',
-        'success_url' => 'http://127.0.0.1:8000/facturacion',
-        'cancel_url' => "http://127.0.0.1:8000/facturacion",
+        'success_url' => 'https://conexioneleven.socialsystemsconnect.com/public/facturacion',
+        'cancel_url' => "https://conexioneleven.socialsystemsconnect.com/public/facturacion",
         ]);
 
 

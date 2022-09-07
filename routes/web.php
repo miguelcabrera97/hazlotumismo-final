@@ -24,7 +24,7 @@ Route::controller(SitesController::class)->group(function (){
     Route::get('/crearsitio','show')->name('crearsitio');
 
     //Ruta para mostrar Sitios que el Usuario a Creado por medio de API
-    // Route::get('/sitios/{user}',[SitesController::class, 'sitios'])->name('sitios');
+     Route::get('/sitios/{user}',[SitesController::class, 'sitios'])->name('sitios');
 
     //Ruta a Controlador para crear sitio
     Route::post('/crear','crear')->name('crear');

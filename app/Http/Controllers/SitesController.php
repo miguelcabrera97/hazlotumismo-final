@@ -26,7 +26,7 @@ class SitesController extends Controller
         //Crea Sitio con la Plantilla Elegida
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'https://api.duda.co/api/sites/multiscreen/create', [
-            'body' => '{"default_domain_prefix":"'.$request->nombre.'","template_id":"'.$request->template_id.'"}',
+            'body' => '{"default_domain_prefix":"Conectaply-'.$request->nombre.'","template_id":"'.$request->template_id.'"}',
             'headers' => [
             'Accept' => 'application/json',
             'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
@@ -115,16 +115,17 @@ class SitesController extends Controller
     }
 
     //Mostrar lista de Sitios Creados por el Usuario
-    // public function sitios(){
-    //     $client = new \GuzzleHttp\Client();
-    //     $response = $client->request('GET', 'https://api.duda.co/api/accounts/grant-access/'.$user.'/sites/multiscreen', [
-    //     'headers' => [
-    //         'Accept' => 'application/json',
-    //         'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
-    //     ],
-    //     ]);
+    //  public function sitios($user){
+    //      $client = new \GuzzleHttp\Client();
+    //      $response = $client->request('GET', 'https://api.duda.co/api/accounts/grant-access/'.$user.'/sites/multiscreen', [
+    //      'headers' => [
+    //          'Accept' => 'application/json',
+    //          'Authorization' => 'Basic MTczMDA3ZDhlNTpUUWU5Wm5WeDB2dE4=',
+    //      ],
+    //      ]);
         
-    //     $sitios= json_decode($response->getBody()->getContents());
-    //     return view('sitios', compact('sitios'));
-    // }
+    //      $sitios= json_decode($response->getBody()->getContents());
+    //      return $sitios;
+    //      //return view('sitios', compact('sitios'));
+    //  }
 }
